@@ -8,13 +8,24 @@ namespace SingletonPattern
 {
     public class RTableServers
     {
+        //readonly mens you cant overwrite _instance with something else, once
+        //its assigned it cant be reassigned by new value
+        //static - you can access _instance without class being extensiated(but now its private)
+        //we create instance of this class only we start uzing it, kind of "lazy instantiation"
+        //everyone gets the same instance
+        private static readonly RTableServers _instance = new RTableServers();
         private List<string> servers = new List<string>();
         private int nextServer = 0;
-        public RTableServers()
+        private RTableServers()
         {
             servers.Add("Arturs");
             servers.Add("Janis");
             servers.Add("Rob");
+        }
+
+        public static RTableServers GetRTableServers() 
+        {
+            return _instance;
         }
 
         public string GetNextServer()

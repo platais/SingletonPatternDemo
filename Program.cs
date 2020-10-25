@@ -8,11 +8,11 @@ namespace SingletonPattern
 {
     class Program
     {
-        static RTableServers host1List = new RTableServers();
-        static RTableServers host2List = new RTableServers();
+        static RTableServers host1List = RTableServers.GetRTableServers();
+        static RTableServers host2List = RTableServers.GetRTableServers();
         static void Main(string[] args)
         {
-            RTableServers servers = new RTableServers();
+            RTableServers servers = RTableServers.GetRTableServers();
 
             //10 total table servers we will ask for
             for (int i = 0; i < 5; i++)
